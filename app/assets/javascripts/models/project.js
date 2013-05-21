@@ -1,11 +1,17 @@
 app.models.Project = Backbone.Model.extend({
 
-  // initialize: function() {
-  //   this.bind("change", this.updateTitle);
-  //  },
-    
-  //  updateTitle: function() {
-  //   this.attributes.title = this.attributes.title + " Changed";
-  // }
+  initialize: function() {
+    //this.skills = new skill_list;
+  },
+
+  skills: function() {
+    var skills = new app.collections.SkillList();
+    skills.fetch();
+  },
+
+  projects: function() {
+    var list = new app.collections.ProjectList();
+    list.fetch();
+  }
 
 });

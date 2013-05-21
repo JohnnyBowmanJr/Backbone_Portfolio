@@ -1,4 +1,4 @@
-app.models.Skill = Backbone.Model.extend({
+app.models.Project.Skill = Backbone.Model.extend({
   defaults:{
     name: ''
   }

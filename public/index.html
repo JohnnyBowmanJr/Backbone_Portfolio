@@ -29,9 +29,12 @@
           <%= user.attributes.bio %>
         </h2>
 
-        <h3 class="mission">
-          <%= user.attributes.mission %>
-        </h3>
+        <div id ="mission">
+          <h3 class="mission-name">
+            <%= user.attributes.mission %>
+          </h3>
+          <input class="edit-mission hidden-edit" placeholder="Enter a mission" />
+        </div>
       </div>
    
 </script>
@@ -128,8 +131,10 @@
   <script src="../app/assets/javascripts/boot.js"></script>
   <script src="../app/assets/javascripts/models/project.js"></script>
   <script src="../app/assets/javascripts/models/user.js"></script>
+
   <script src="../app/assets/javascripts/collections/project_list.js"></script>
   <script src="../app/assets/javascripts/views/project_view.js"></script>
+
   <script src="../app/assets/javascripts/views/user_view.js"></script>
   <script src="../app/assets/javascripts/application.js"></script>
 </body>
