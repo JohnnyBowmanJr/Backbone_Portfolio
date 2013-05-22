@@ -1,12 +1,8 @@
 app.models.Project = Backbone.Model.extend({
 
   initialize: function() {
-    //this.skills = new skill_list;
-  },
+    var skills = new app.collections.SkillList([{name:'Ruby', id: 1}, {name: 'Rails', id: 2}]);
 
-  skills: function() {
-    var skills = new app.collections.SkillList();
-    skills.fetch();
   },
 
   projects: function() {

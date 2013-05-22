@@ -21,7 +21,7 @@ app.views.ProjectView = Backbone.View.extend({
     'keypress .edit-title': 'updateTitle',
     'keypress .edit-body': 'updateBody',
     'blur .edit-title': 'escapeTitle',
-    'blur .edit-body': 'escapeBody',
+    'blur .edit-body': 'escapeBody'
   },
 
   //In this function, you inject the markup into the elements. Without the render function, 
@@ -29,7 +29,10 @@ app.views.ProjectView = Backbone.View.extend({
   //seem standard across other tutorials I've seen, so I don't think we have to worry
   //about editing them too much.
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    //this.$el.html(this.template(this.model.toJSON()));
+    //this.$el.html(this.template({project: this.model}));
+    this.$el.html(this.template({project: this.model}));
+    //render skill list here  
     return this;
   },
 
@@ -77,5 +80,6 @@ app.views.ProjectView = Backbone.View.extend({
     this.$el.addClass('editing');
     this.$el.find('.edit-url').show().focus().next('a').hide();
   }
+
 
 });

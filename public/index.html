@@ -54,13 +54,13 @@
 
           <div class="project-details">
             <h3 class="project-name">
-              <%= title %>
+              <%= project.attributes.title %>
             </h3>
 
             <input class="edit-title hidden-edit" placeholder="Enter a title">
 
-            <a class="url" href="<%= url %>">
-              <%= url %>
+            <a class="url" href="<%= project.attributes.url %>">
+              <%= project.attributes.url %>
             </a>
 
             <input class="edit-url hidden-edit" placeholder="Enter a URL">
@@ -71,6 +71,9 @@
               </span>
 
               <ul class="skill-list">
+                
+
+
                 <li class="skill">
                   <span class="name">Ruby</span>
                   <span class="delete">Remove</span>
@@ -103,7 +106,7 @@
 
             <div class="body">
 
-              <%= body %>
+              <%= project.attributes.body %>
 
             </div>
           </div>
@@ -131,9 +134,12 @@
   <script src="../app/assets/javascripts/boot.js"></script>
   <script src="../app/assets/javascripts/models/project.js"></script>
   <script src="../app/assets/javascripts/models/user.js"></script>
+  <script src="../app/assets/javascripts/models/skill.js"></script>
+  <script src="../app/assets/javascripts/collections/skill_list.js"></script>
 
   <script src="../app/assets/javascripts/collections/project_list.js"></script>
   <script src="../app/assets/javascripts/views/project_view.js"></script>
+  <script src="../app/assets/javascripts/views/skill_view.js"></script>
 
   <script src="../app/assets/javascripts/views/user_view.js"></script>
   <script src="../app/assets/javascripts/application.js"></script>
