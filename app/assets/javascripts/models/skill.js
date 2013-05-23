@@ -1,3 +1,1 @@
-app.models.Project = Backbone.Model.extend({
-
-});
+app.models.Skill = Backbone.Model.extend();
