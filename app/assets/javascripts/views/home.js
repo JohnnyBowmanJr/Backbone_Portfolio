@@ -22,7 +22,8 @@ app.views.Home = Backbone.View.extend({
   },
 
   showUser: function() {
-    event.preventDefault();
+    //
+    //event.preventDefault();
     var id = $(event.target).data("id");
     new app.Router().navigate('/users/' + id, {trigger: true});
   }

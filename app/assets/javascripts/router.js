@@ -10,6 +10,8 @@ app.Router = Backbone.Router.extend({
     $('#content').html(view.render().el);
   },
 
+
+  //how is user_id getting passed through this anonymous function
   userShow: function(user_id) {
     var user = new app.models.User({id: user_id});
     user.fetch();

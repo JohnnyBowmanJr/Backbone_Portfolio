@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  // Create some dummy users
+  //Create some dummy users
   // var me = new app.models.User({
   //   first_name: "Corey",
   //   last_name: "Trombley",
@@ -19,6 +19,7 @@ $(document).ready(function() {
   // });
   // me.save();
 
+  //what's going on here?
   var router = new app.Router();
   Backbone.history.start({pushState: true});
   router.navigate('');

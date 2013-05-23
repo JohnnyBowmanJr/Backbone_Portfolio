@@ -12,6 +12,21 @@ app.views._Project = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template({ project : this.model }));
+     
+    var skillList = new app.collections.SkillList();
+    skillList.add([
+      {name: "Flying Dutchman"},
+      {name: "Black Pearl"}
+    ]);
+  
+    skillList.fetch();
+
+    skillList.forEach(function(skill) {
+      var view = new app.views._Skill({});
+      _this.$el.find('.skill-list').append(view.render().el);
+    });
+
+
     return this;
   },
 

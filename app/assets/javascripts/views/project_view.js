@@ -2,6 +2,8 @@ app.views.ProjectView = Backbone.View.extend({
 
   tagName: 'div',
   id: 'project-page',
+  
+  //this.template() will put whatever's in templates/project into this
   template: JST['templates/project'],
 
   render: function() {
@@ -9,6 +11,7 @@ app.views.ProjectView = Backbone.View.extend({
 
     // Try to find projects already in the local storage
     var projectList = new app.collections.ProjectList();
+    // what does this return? seems like an array of functions
     projectList.fetch();
 
     // Create a blank project for us to fill in.
