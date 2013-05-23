@@ -1,6 +1,7 @@
 app.collections.SkillList = Backbone.Collection.extend({
 
   model: app.models.Skill,
-  localStorage: new Backbone.LocalStorage('portfolio-skills')
+  url: "/user_project_skills"
+  //localStorage: new Backbone.LocalStorage('portfolio-skills')
 
 });

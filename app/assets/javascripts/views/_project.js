@@ -33,7 +33,15 @@ app.views._Project = Backbone.View.extend({
   updateTitle: function() {
     var new_title = this.$el.find('.edit-title').val().trim();
     this.model.set('title', new_title);
-    this.model.save();
+    if(this.model.isNew()){
+      //this.model is like params(@user) in a rails create form. create(this.model) knows
+      //to save all of this.model's attributes to the collection
+      this.collection.create(this.model);
+    }
+    else
+      //since this is updating, we want to update an individual model, so the route needs an :id.
+      this.model.save();
+    }
     this.$el.find('.edit-title').val('').hide().prev('h3').show().html(new_title);
   },
 

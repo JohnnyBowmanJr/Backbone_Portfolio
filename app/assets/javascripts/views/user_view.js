@@ -10,6 +10,8 @@ app.views.UserView = Backbone.View.extend({
     this.$el.html(html);
 
     return this;
+
+
   }
 
 });

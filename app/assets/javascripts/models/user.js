@@ -1,7 +1,16 @@
 app.models.User = Backbone.Model.extend({
 
-  localStorage: new Backbone.LocalStorage('portfolio-user'),
+  //localStorage: new Backbone.LocalStorage('portfolio-user'),
+  url: function() {
+  	return '/users' + this.id;
+  },
 
+  // initialize: function(){
+  // 	this.projects = new app.collecitons.ProjectList();
+  // 	this.projects.url = '/users/' + this.id + '/projects';
+  // 	this.projects.on('reset', this.updateCounts);
+  // },
+  
   full_name: function() {
     return this.attributes.first_name + " " + this.attributes.last_name;
   }

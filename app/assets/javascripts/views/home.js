@@ -11,19 +11,22 @@ app.views.Home = Backbone.View.extend({
 
     // Find all the users in the system
     var users = new app.collections.UserList();
-    users.fetch();
-
-    // Add a <li> element containing a link to each profile page
     var _this = this;
-    users.forEach(function(user) {
-      _this.$el.find("#users").append("<li><a href='#' class='user-link' data-id='" + user.id + "'>" + user.full_name() + "</a></li>");
+    users.fetch({
+      success: function(users){
+        // When rails has returned some JSON...
+        // Add a <li> element containing a link to each profile page
+        users.forEach(function(user) {
+          _this.$el.find("#users").append("<li><a href='#' class='user-link' data-id='" + user.id + "'>" + user.full_name() + "</a></li>");
+        });  
+      }
     });
     return this;
   },
 
   showUser: function() {
-    //
-    //event.preventDefault();
+    
+    event.preventDefault();
     var id = $(event.target).data("id");
     new app.Router().navigate('/users/' + id, {trigger: true});
   }
