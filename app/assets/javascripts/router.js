@@ -11,12 +11,17 @@ app.Router = Backbone.Router.extend({
   },
 
 
-  //how is user_id getting passed through this anonymous function
+  //Backbone provides ability for us to pass user_id into function since users/:id is in routes
   userShow: function(user_id) {
     var user = new app.models.User({id: user_id});
-    user.fetch();
-    var view = new app.views.ProjectView({ model : user });
-    $('#content').html(view.render().el);
+    user.fetch({
+      success: function(user, response, options) {
+        var view = new app.views.ProjectView({ model : user });
+        $('#content').html(view.render().el);
+      }
+    });
+    // var view = new app.views.ProjectView({ model : user });
+    //$('#content').html(view.render().el);
   }
 
 });

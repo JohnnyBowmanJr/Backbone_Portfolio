@@ -12,8 +12,9 @@ app.views._Skill = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
-    if(this.options.project)
+    if(this.options.project){
       this.model.set({ project_id: this.options.project.id });
+    }
     this.model.view = this;
     this.model.bind("change", this.setName);
   },

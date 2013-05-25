@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-		binding.pry
+		# binding.pry
 		@users = User.all
 		render :json => @users
 	end

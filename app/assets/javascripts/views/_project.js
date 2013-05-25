@@ -38,7 +38,7 @@ app.views._Project = Backbone.View.extend({
       //to save all of this.model's attributes to the collection
       this.collection.create(this.model);
     }
-    else
+    else {
       //since this is updating, we want to update an individual model, so the route needs an :id.
       this.model.save();
     }
