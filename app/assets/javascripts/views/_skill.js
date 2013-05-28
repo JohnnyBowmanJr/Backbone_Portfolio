@@ -40,7 +40,34 @@ app.views._Skill = Backbone.View.extend({
     $(event.target).hide().prev('.name').show();
     var newName = $(event.target).val();
     this.model.set({ name : newName });
-    this.options.project.skills.create(this.model);
+
+    var models = [];
+    var _this = this;
+    if (this.model.attributes.project) {
+      this.model.attributes.project.skills.forEach(function(skill){
+        models.push(skill);
+      });
+      models.push(_this.model);
+      //this.model.attributes.project.skills.set(models);
+      this.model.attributes.project.save();
+    }
+    else{
+      this.model.project.skills.forEach(function(skill){
+        if( _this.model.cid == skill.cid){
+          skill.set({ name: newName});
+        }
+        models.push(skill);
+      });
+    }
+
+    //how does this.model.attributes (or this.model.project) connect
+    //with the "this.model.skills" in the initialize function in _project.js?
+    //what do i have to put in the render SkillView loop?
+    //this.model.attributes.project.skills.set(this.model);
+    //this.model.attributes.project_id = this.model.attributes.project.id
+    //when clicking on existing skill,
+    //this.model.project.attributes.skills = skills array
+    this.model.attributes.project.skills.set(models);
   }
 
 });

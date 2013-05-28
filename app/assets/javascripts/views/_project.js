@@ -1,6 +1,6 @@
 app.views._Project = Backbone.View.extend({
 
-  tagName: 'div',
+  tagName: 'li',
   className: 'project',
 
   template: JST['templates/_project'],
@@ -11,12 +11,19 @@ app.views._Project = Backbone.View.extend({
     'click .add-skill' : 'addSkill'
   },
 
+  initialize: function() {
+    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model.skills, 'add', this.render);
+    this.listenTo(this.model.skills, 'change', this.update);
+  },
+
   render: function() {
     this.$el.html(this.template({ project : this.model }));
     var _this = this;
-    this.model.getSkills().forEach(function(skill) {
+    
+    this.model.skills.forEach(function(skill) {
+      skill.project = _this.model;
       var skill_html = new app.views._Skill({
-        project: _this.model,
         model: skill
       });
       _this.$el.find('.skill-list').append(skill_html.render().el);
@@ -28,6 +35,10 @@ app.views._Project = Backbone.View.extend({
   editProjectName: function() {
     this.$el.addClass('editing');
     this.$el.find('.edit-title').show().focus().prev('h3').hide();
+  },
+
+  update: function() {
+    this.model.save();
   },
 
   updateTitle: function() {
@@ -47,12 +58,12 @@ app.views._Project = Backbone.View.extend({
 
   addSkill: function() {
     var skill = new app.views._Skill({
-      project: this.model,
       model: new app.models.Skill({
-        name: "Click here to edit"
+        name: "Click here to edit",
+        project: this.model
       })
     });
-
+    //this.model.skills.add(skill);
     this.$el.find('.skill-list').append(skill.render().el).find(".skill:last").hide().fadeIn();
   }
 

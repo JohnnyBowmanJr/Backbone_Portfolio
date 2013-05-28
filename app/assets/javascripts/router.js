@@ -18,8 +18,10 @@ app.Router = Backbone.Router.extend({
       success: function(user, response, options) {
         var view = new app.views.ProjectView({ model : user });
         $('#content').html(view.render().el);
+
       }
     });
+    //$("#project-list").sortable();
     // var view = new app.views.ProjectView({ model : user });
     //$('#content').html(view.render().el);
   }

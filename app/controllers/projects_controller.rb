@@ -3,9 +3,9 @@ class ProjectsController < ApplicationController
   before_filter :load_user
 
   def create
-    binding.pry
+    #binding.pry
     #this is now going to have skills_attributes
-    #in params([:project])
+    #in params([:project])  
     @project = Project.new(params[:project])
     @project.save!
 
@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+   
     @project = Project.find(params[:id])
     @project.update_attributes(params[:project])
     render :json => @project

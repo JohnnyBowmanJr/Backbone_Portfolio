@@ -9,7 +9,7 @@ app.models.Project = Backbone.Model.extend({
   },
 
   initialize: function() {
-    this.skills = new app.collections.SkillList();
+    this.skills = this.skills || new app.collections.SkillList();
     this.skills.model = app.models.Skill; // Don't know why but this worked
   },
 
@@ -19,15 +19,17 @@ app.models.Project = Backbone.Model.extend({
     }
   },
 
-  getSkills: function() {
-    this.skills.fetch();
-    return this.skills.where({ project_id : this.id });
-  },
+  // getSkills: function() {
+  //   this.skills.fetch();
+  //   return this.skills.where({ project_id : this.id });
+  // },
 
-  //when projects#create his the render :json line, 
+  //when project_view hits projects.fetch in initialize, 
+  ////projects#create his the render :json line, 
   //this hits. It needs to take the skills and parse 
   //them right.
   parse: function(response) {
+    //i can now say project.skills elsewhere in backbone code
     var skills_json = response.skills;
     this.skills = new app.collections.SkillList(skills_json);
     return response;
@@ -44,8 +46,6 @@ app.models.Project = Backbone.Model.extend({
     delete json.project.skills;
     return json;
   }
- 
-
   //hits when we sync() or save()
 
 });
