@@ -1,4 +1,3 @@
-//= require jquery
+//= require jquery-1.9.1.min
 //= require underscore-min
-//= require_ujs
 //= require jquery.ui.all
