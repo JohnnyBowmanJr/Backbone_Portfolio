@@ -21,7 +21,7 @@ app.Router = Backbone.Router.extend({
 
       }
     });
-    //$("#project-list").sortable();
+    $("#project-list").sortable();
     // var view = new app.views.ProjectView({ model : user });
     //$('#content').html(view.render().el);
   }
